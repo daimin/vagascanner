@@ -139,8 +139,9 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
 
         $pattern  = "#^http://i\.ifeng\.com/mil/.+/news\?aid=\d+&amp;.*mid=\w+$#i"; // 注意转码
         if(preg_match($pattern, $rs)){
-//echo $rs.'<br/>';
+
             $equal_links[count($equal_links)] = $rs.'&m=1';
+            echo $rs.'&m=1<br/>';
         }
         
     }
@@ -175,6 +176,7 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
             echo "<span style=\"color:blue\">Num ".($idx)." begin fetch ...</span><br/>";
                 
             $createtime = date("Y-m-d H:i:s");
+            echo $elink."<br/>";
             $html = file_get_html($elink);
             $title = "";
             $content = "";
@@ -215,6 +217,8 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
                  if(!empty($title)) break;
 
             }
+            
+       
            if(empty($title)) {
                foreach($html->find('.newsTitle') as $ti){
                      $title = $ti->innertext;
@@ -233,6 +237,22 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
 
                 }
             }
+            
+            if(empty($title)) {
+               foreach($html->find('title') as $ti){
+             
+                     $title = $ti->plaintext;
+                     $title = substr($title,0,strrpos($title,'-'));                     
+                     if(!empty($title)) break;
+
+                }
+            }
+            
+            if(empty($title)) {
+               continue;
+            }
+            
+            
             
             
             
@@ -260,6 +280,35 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
                 break;
             }
             
+
+            
+            if(empty($cont_str)){
+
+                 foreach($html->find("#articlecontent") as $cont){ 
+                    
+                    $content = $cont->innertext;
+                    echo $content."<br/>";
+                    $contents = explode("分享",$content);
+                    if(count($contents) > 1){
+                        $content = $contents[0];
+                    }
+                    //str_replace('')$content
+                    $contents = explode("<br/>",$content);
+                    $ccount = count($contents);
+                    array_shift($contents);
+                    array_shift($contents);
+                    array_shift($contents);
+                    $cont_str = implode($contents, '<br/>');
+                    
+                    if(empty($plain_content)){
+                        $cont_html = str_get_html($cont_str);
+                        $plain_content = $cont_html->plaintext;
+                    }
+                    break;
+                }
+            }
+            
+            
             $content = $cont_str;
             $datetime = date("YmdHis");
             $tarfname = $cache_dir.'/'.$datetime.($idx++).'.html';
@@ -277,7 +326,7 @@ function fetch_ifeng_mil_3g($url, $cache_dir){
             }
           
             $resume = trim(mb_substr($plain_content, 0, 50, "utf-8"));
-     echo $content;
+
             writeToFile($tarfname, $content,'w+');
             $title = trim($title);
             $resume = trim($resume);
