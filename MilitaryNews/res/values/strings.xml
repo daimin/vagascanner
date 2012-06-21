@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">军事新闻</string>
+    
+    <string name="setting">设置</string>
+	<string name="setting_push">推送设置</string>
+    <string name="setting_push_key">setting_push</string>
+    <string name="setting_update">更新设置</string>
+    <string name="setting_update_key">setting_update</string>
+    <string name="setting_clear">清除临时文件</string>
+    <string name="setting_clear_key">setting_clear</string>
+    <string name="setting_font">浏览设置</string>
+    <string name="setting_font_key">setting_font</string>
+    <string name="setting_about">关于</string>
+    <string name="setting_about_key">setting_about</string>
+    <string name="setting_pic_key">setting_pic</string>
+    <string name="setting_share_sina_key">setting_share_sina</string>
+    <string name="setting_share_renren_key">setting_share_renren</string>
+    <string name="setting_share_qq_key">setting_share_qq</string>
+</resources>
