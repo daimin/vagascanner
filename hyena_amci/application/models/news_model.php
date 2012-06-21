@@ -34,7 +34,7 @@ class News_model extends CI_Model {
     	write_file($fullfname,$this->content,'w+');
     	
     	$this->db->query("insert into army_news(title,resume,cont_file,createtime,idx) 
-    	                  values('$this->title', '$this->resume','$this->cont_file', '$this->createtime')");
+    	                  values('$this->title', '$this->resume','$this->cont_file', '$this->createtime',0)");
     	$insert_id = $this->db->insert_id();
     	$this->db->query("update army_news set idx=$insert_id where id=$insert_id");
     	
