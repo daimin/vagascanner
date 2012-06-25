@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="pre0"
+        android:layout="@layout/setting_nav"
+        android:title="新闻推送设置" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/setting_push_key"
+            android:layout="@layout/setting_text"
+            android:summary="每天早晚为您推送最新资讯"
+            android:summaryOff="每天早晚为您推送最新资讯"
+            android:summaryOn="每天早晚为您推送最新资讯"
+            android:title="新闻速递"
+            android:widgetLayout="@layout/setting_checkbox_widget" />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pre1"
+        android:layout="@layout/setting_nav"
+        android:title="节省流量设置" >
+       <!--  <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/setting_pic_key"
+            android:layout="@layout/setting_text"
+            android:summary="节省3G/2G网络的流量使用 "
+            android:summaryOff="节省3G/2G网络的流量使用 "
+            android:summaryOn="节省3G/2G网络的流量使用 "
+            android:title="仅WIFI下加载正文图片"
+            android:widgetLayout="@layout/setting_checkbox_widget" /> -->
+     <!--    <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/PicSettingArray"
+            android:entryValues="@array/PicSettingArray_Values"
+            android:key="@string/setting_pic_key"
+            android:layout="@layout/setting_list"
+            android:summary="当前:任何网络"
+            android:title="显示正文图片 " />
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/OfflineSettingArray"
+            android:entryValues="@array/OfflineSettingArray_Values"
+            android:key="@string/setting_update_key"
+            android:layout="@layout/setting_list"
+            android:summary="当前:WIFI时可用"
+            android:title="离线阅读 " /> -->
+        <Preference
+            android:key="@string/setting_pic_key"
+            android:layout="@layout/setting_list"
+            android:selectable="true"
+            android:summary="当前:任何网络"
+            android:title="显示正文图片"/>
+        <Preference
+            android:key="@string/setting_update_key"
+            android:layout="@layout/setting_list"
+            android:selectable="true"
+            android:summary="当前:WIFI时可用"
+            android:title="离线阅读"/>   
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pre4"
+        android:layout="@layout/setting_nav"
+        android:title="浏览设置" >
+     <!--    <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/FontSizeSettingArray"
+            android:entryValues="@array/FontSizeSettingArray_Values"
+            android:key="@string/setting_font_key"
+            android:layout="@layout/setting_list"
+            android:summary="当前:中"
+            android:title="文章字体大小 " />
+     -->
+       <Preference
+            android:key="@string/setting_font_key"
+            android:layout="@layout/setting_list"
+            android:selectable="true"
+            android:summary="当前:中"
+            android:title="文章字体大小"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pre3"
+        android:layout="@layout/setting_nav"
+        android:title="缓存设置" >
+        <Preference
+            android:key="@string/setting_clear_key"
+            android:layout="@layout/setting_text"
+            android:summary="清除缓存中临时文件，当前缓存:0KB"
+            android:title="清除临时文件" />
+    </PreferenceCategory>
+     <PreferenceCategory
+        android:key="pre5"
+        android:layout="@layout/setting_nav"
+        android:title="分享设置" >
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/setting_share_sina_key"
+            android:layout="@layout/setting_share_sina"
+            android:title="新浪微博" 
+            android:summaryOff="未绑定"
+            android:summaryOn="已绑定"
+            android:widgetLayout="@layout/setting_sharebind_widget"
+            />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/setting_share_renren_key"
+            android:layout="@layout/setting_share_renren"
+            android:title="人人网" 
+            android:summaryOff="未绑定"
+            android:summaryOn="已绑定"
+            android:widgetLayout="@layout/setting_sharebind_widget"
+            />
+  <!--       <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/setting_share_qq_key"
+            android:layout="@layout/setting_share_qq"
+            android:summaryOff="未绑定"
+            android:summaryOn="已绑定"
+            android:title="腾讯微博" 
+            android:widgetLayout="@layout/setting_sharebind_widget"/> -->
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:key="pre5"
+        android:layout="@layout/setting_nav"
+        android:title="关于" >
+        <Preference
+            android:key="@string/setting_about_key"
+            android:layout="@layout/setting_about"
+            android:selectable="false"
+            android:summary="Copyright (c) 2004-2012 版权所有 "
+            android:title="3G门户新闻 for Android版本"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
