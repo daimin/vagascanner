@@ -24,7 +24,7 @@ public class ImageUtils {
 	
 	// 缓存图片的路�?
     public final static String CACHE_PIC_PATH = File.separator + "sdcard"
-				+ File.separator + "3GNews";
+				+ File.separator + "hyenaNews";
 		
 	public final static String CACHE_PIC_DIR_PATH = CACHE_PIC_PATH
 				+ File.separator + "cache" + File.separator;
