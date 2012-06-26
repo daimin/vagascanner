@@ -315,4 +315,8 @@ public class Common {
          public static String toHTMl(String str){
         	 return str.replaceAll("&amp;", "&").replaceAll("&lt;", "<").replaceAll("&gt;", ">").replaceAll("&nbsp;", "  ");
          }
+         
+         public static String convSpecialChar(String str){
+        	 return str.replaceAll("&quot;", "\"");
+         }
 }
