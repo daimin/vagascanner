@@ -13,6 +13,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import cn.hyena.apps.mititarynews.bean.NewsBean;
+import cn.hyena.apps.utils.Common;
 import cn.hyena.apps.utils.LogUtils;
 import cn.hyena.apps.utils.Utils;
 import android.content.res.Resources.NotFoundException;
