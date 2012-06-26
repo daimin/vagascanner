@@ -27,11 +27,11 @@ public class NewsItemAnalysis{
 					}
 					if (!Common.isNullOrBlank(obj.optString("title"))
 							&& !"null".equals(obj.optString("title"))) {
-						newsBean.title = obj.optString("title");
+						newsBean.title = Common.convSpecialChar(obj.optString("title"));
 					}
 					if (!Common.isNullOrBlank(obj.optString("resume"))
 							&& !"null".equals(obj.optString("resume"))) {
-						newsBean.su = obj.optString("resume");
+						newsBean.su = Common.convSpecialChar(obj.optString("resume"));
 					}
 					newsBeanArr.add(newsBean);
 				}

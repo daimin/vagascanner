@@ -33,7 +33,7 @@ public class NewsContentAnalysis{
 			 
 			 if(jsonObject.optString("title") != null)
 			 {
-				 newsBean.title = jsonObject.optString("title");//资讯标题
+				 newsBean.title = Common.convSpecialChar(jsonObject.optString("title"));//资讯标题
 			 }	  
 			 if(jsonObject.optString("content") != null)//资讯内容
 			 {
