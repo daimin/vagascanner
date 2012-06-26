@@ -61,7 +61,11 @@ public class MainActivity extends BaseActivity {
 			public void onItemClick(AdapterView<?> l, View v, int position,long id) {
 				LogUtils.i(TAG, "onListItemClick() id:" + id);
 				if (newsBeanArr != null) {
-					NewsBean bean = newsBeanArr.get(position);
+					int arrPos = position;
+					if(position > 0){
+					    arrPos = position - 1;
+					}
+					NewsBean bean = newsBeanArr.get(arrPos);
 					if (bean != null && !Common.isNullOrBlank(bean.id)) {
 						Intent intent = new Intent();
 						Bundle bundle = new Bundle();
