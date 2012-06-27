@@ -47,7 +47,10 @@ if(empty( $title)){
     exit();
 }
 
+$title .= " ";
 $cont = new Content();
+$title = str_replace("\r\n","",$title);
+$title = str_replace("\n","",$title);
 $cont->title = urlencode(remove_htmlchar($title));
 
 $handle = fopen($cont_file, "r");
@@ -66,7 +69,40 @@ if(!is_utf8($content)){
     $content = iconv("GBK","UTF-8",$content);  
 }
 
+
+	$search = array ("'<script[^>]*?>.*?</script>'si",  // 去掉 javascript
+
+	                 "'([\r\n])[\s]+'",                 // 去掉空白字符
+	                 "'&(quot|#34);'i",                 // 替换 HTML 实体
+	                 "'&(amp|#38);'i",
+	                 "'&(lt|#60);'i",
+	                 "'&(gt|#62);'i",
+	                 "'&(nbsp|#160);'i",
+	                 "'&(iexcl|#161);'i",
+	                 "'&(cent|#162);'i",
+	                 "'&(pound|#163);'i",
+                 "'&(copy|#169);'i",
+	                 "'&#(\d+);'e");                    // 作为 PHP 代码运行
+	 
+	$replace = array ("",
+	                  "\\1",
+	                  "\"",
+	                  "&",
+	                  "<",
+	                  ">",
+	                  " ",
+	                  chr(161),
+	                  chr(162),
+	                  chr(163),
+	                  chr(169),
+	                  "chr(\\1)");
+
+$content = preg_replace ($search, $replace, $content);                      
+
 $content = urlencode(htmlspecialchars(remove_htmlchar($content)));
+$content = str_replace("\r\n","",$content);
+$content = str_replace("\n","",$content);
+
 $cont->content = $content;
 
 
