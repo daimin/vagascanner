@@ -29,6 +29,7 @@ if($result = $conn->query($query)){
         //$n->title = $row['title'];
         $resume = $row['resume'];
         $resume = trim($resume);
+        $resume = str_replace("\r\n","",$resume);
         $apos = strrpos($resume, '&');
         if($apos){
             $resume = substr($resume,0,$apos);
