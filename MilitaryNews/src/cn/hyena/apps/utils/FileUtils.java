@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -509,5 +510,30 @@ public class FileUtils {
 			} else if (length < 1024)
 				result = Long.toString(length) + "B";
 			return result;
+		 }
+		 
+		 
+		 public static void saveToSd(String fname, String cont){
+           
+                 /** 
+                  * Environment.getExternalStorageDirectory(); 
+                  * 得到外存储设备的路径 
+                  *  
+                  */  
+			     
+			     FileWriter fout = null;
+                 try {
+					fout = new FileWriter(new File(Environment.getExternalStorageDirectory(),fname));
+					fout.write(cont);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}finally{
+					try {
+						fout.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+                
 		 }
 }
