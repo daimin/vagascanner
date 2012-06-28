@@ -319,4 +319,9 @@ public class Common {
          public static String convSpecialChar(String str){
         	 return str.replaceAll("&quot;", "\"");
          }
+         
+         public static String trimLineBreakChar(String str){
+        	 
+        	 return str.replace("\n\r", "").replace("\n", "").replace("\r", "");
+         }
 }

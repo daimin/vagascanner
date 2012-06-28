@@ -1,9 +1,11 @@
 package cn.hyena.apps.mititarynews.analysis;
 
 import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import cn.hyena.apps.mititarynews.bean.NewsBean;
 import cn.hyena.apps.utils.Common;
 /**

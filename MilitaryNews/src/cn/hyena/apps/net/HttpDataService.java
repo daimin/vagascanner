@@ -34,6 +34,7 @@ public class HttpDataService {
 			 String jsonString = null;
 		     jsonString  = Common.toHTMl(HttpConnection.GetHttpData(sb.toString()));
 		     NewsContentAnalysis newsItemAnalysis = new NewsContentAnalysis();
+             jsonString = Common.trimLineBreakChar(jsonString);
 		     newsItemAnalysis.parser(jsonString);//锟斤拷锟斤拷锟斤拷锟?
 			 message.obj = newsItemAnalysis.newsBean;
 		} catch (Exception e) {
