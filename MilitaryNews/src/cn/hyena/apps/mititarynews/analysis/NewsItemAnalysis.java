@@ -11,7 +11,7 @@ import cn.hyena.apps.utils.Common;
 /**
  * 新闻列表项解析
  */
-public class NewsItemAnalysis{
+public class NewsItemAnalysis{ 
 
 	public ArrayList<NewsBean> newsBeanArr = new ArrayList<NewsBean>();
 
