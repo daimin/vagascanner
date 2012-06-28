@@ -106,7 +106,7 @@ class Main extends CI_Controller {
         $news = $news_stmt->result();
         foreach($news as $n){
         	$finfo = get_file_info($this->input->server("DOCUMENT_ROOT").'/'.FETCH_APP.'/'.$n->cont_file);
-        	$n->filesize = ($finfo['size']/1024);
+        	$n->filesize = sprintf("%0.2f",($finfo['size']/1024));
         	
         }
         $data["query"] = $news;
