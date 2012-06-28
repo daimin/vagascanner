@@ -81,6 +81,9 @@ class Main extends CI_Controller {
 		
 		$this->load->model('news_model');
 		
+		$this->load->helper('file');
+		
+		
 		$query = $this->db->count_all_results("army_news");
 		
 		//配置分页类参数
@@ -99,7 +102,14 @@ class Main extends CI_Controller {
                                      // 如 [url]http://yoursite.com/index.php/article/index/2[/url], 
                                      // 那么"/index/"后面的就是页数即'3'. 这个的作用是让页面的连接显示当前页数对应起来
     
-        $data["query"] = $this->news_model->getNewList($config['per_page'], $this->uri->segment(3));
+        $news_stmt = $this->news_model->getNewList($config['per_page'], $this->uri->segment(3));
+        $news = $news_stmt->result();
+        foreach($news as $n){
+        	$finfo = get_file_info($this->input->server("DOCUMENT_ROOT").'/'.FETCH_APP.'/'.$n->cont_file);
+        	$n->filesize = ($finfo['size']/1024);
+        	
+        }
+        $data["query"] = $news;
         $this->pagination->initialize($config); //初始化分页
 
 		$this->load->view ( 'new_list', $data );

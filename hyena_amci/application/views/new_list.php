@@ -129,9 +129,10 @@ function add_new(){
 	<td width="28%">新闻标题</td>
 	<td width="10%">录入时间</td>
 	<td width="8%">发布人</td>
+	<td width="8%">文件大小(K)</td>
 	<td width="10%">操作</td>
 </tr>
-<?php foreach($query->result() as $n){ 
+<?php foreach($query as $n){ 
 ?>
 <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22" >
 	<td><?php echo $n->id;?></td>
@@ -139,6 +140,7 @@ function add_new(){
 	<td align="left"><u><?php echo $n->title;?></u></td>
 	<td><?php echo $n->createtime;?></td>
 	<td>admin</td>
+	<td><?php echo $n->filesize?></td>
 	<td><a href="<?php echo site_url("main/new_edit/".$n->id); ?>">编辑</a>&nbsp;|&nbsp;<a href="<?php echo site_url("main/to_top/".$n->id."/".$n->idx); ?>">置顶</a></td>
 </tr>
 <?php } ?>

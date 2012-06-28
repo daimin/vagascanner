@@ -6,6 +6,7 @@ class News_model extends CI_Model {
     var $resume    = '';
     var $createtime = '';
     var $cont_file = '';
+    var $filesize;
     var $id;
     var $idx;
     

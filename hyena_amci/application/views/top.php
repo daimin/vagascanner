@@ -146,12 +146,17 @@ a:link,a:visited {
   padding-left:10px;
   /* background:url(skin/images/frame/toprightbg.gif) no-repeat; */
 }
+.logo{
+	margin-left:20px;
+    font-size:18px;
+    font-weight:bold;
+}
 </style>
 </head>
 <body bgColor='#ffffff'>
 <table width="100%" border="0" cellpadding="0" cellspacing="0" background="images/frame/topbg.gif">
   <tr>
-    <td width='20%' height="60"><img src="images/frame/logo.gif" /></td>
+    <td width='20%' height="60" ><span class="logo">新闻发布系统</span></td>
     <td width='80%' align="right" valign="bottom">
     	<table width="750" border="0" cellspacing="0" cellpadding="0">
       <tr>
