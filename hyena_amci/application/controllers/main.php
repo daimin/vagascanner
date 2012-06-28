@@ -175,6 +175,14 @@ class Main extends CI_Controller {
 		
 	}
 	
+	function view_new($dir,$file){
+		$cont_file = $dir.'/'.$file;
+		$this->load->helper('file');
+    	$fullfname = $this->input->server("DOCUMENT_ROOT").'/'.FETCH_APP.'/'.$cont_file;
+    	header("Content-type: text/html; charset=utf-8");
+    	echo read_file($fullfname);
+	}
+	
 
 }
 

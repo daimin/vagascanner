@@ -99,7 +99,7 @@ function add_new(){
 }
 
 function showNew(url){
-	window.showModalDialog(url,"","dialogWidth=500px;dialogHeight=500px;status=no;help=no;scrollbars=no");
+	window.showModalDialog(url,"","dialogWidth=650px;dialogHeight=700px;status=no;help=no;scrollbars=no");
 }
 </script>
 </head>
@@ -141,7 +141,7 @@ function showNew(url){
 <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22" >
 	<td><?php echo $n->id;?></td>
 	<td><input name="id" type="checkbox" id="id" value="<?php echo $n->id?>" class="np"></td>
-	<td align="left"><u><a href="javascript:void(0)" onclick="showNew('<?php echo "/".FETCH_APP.'/'.$n->cont_file?>')"><?php echo $n->title;?></a></u></td>
+	<td align="left"><u><a href="javascript:void(0)" onclick="showNew('<?php echo site_url("main/view_new")."/".$n->cont_file?>')"><?php echo $n->title;?></a></u></td>
 	<td><?php echo $n->createtime;?></td>
 	<td>admin</td>
 	<td><?php echo $n->filesize?></td>
