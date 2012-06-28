@@ -97,6 +97,10 @@ function noSelAll()
 function add_new(){
 	window.location = "<?php echo site_url("main/new_add");?>";
 }
+
+function showNew(url){
+	window.showModalDialog(url,"","dialogWidth=500px;dialogHeight=500px;status=no;help=no;scrollbars=no");
+}
 </script>
 </head>
 <body leftmargin="8" topmargin="8" >
@@ -137,7 +141,7 @@ function add_new(){
 <tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22" >
 	<td><?php echo $n->id;?></td>
 	<td><input name="id" type="checkbox" id="id" value="<?php echo $n->id?>" class="np"></td>
-	<td align="left"><u><?php echo $n->title;?></u></td>
+	<td align="left"><u><a href="javascript:void(0)" onclick="showNew('<?php echo "/".FETCH_APP.'/'.$n->cont_file?>')"><?php echo $n->title;?></a></u></td>
 	<td><?php echo $n->createtime;?></td>
 	<td>admin</td>
 	<td><?php echo $n->filesize?></td>
