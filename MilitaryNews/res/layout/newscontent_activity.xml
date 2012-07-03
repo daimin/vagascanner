@@ -4,8 +4,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" android:background="#F2F2F2">
     <RelativeLayout android:id="@+id/TopPnl"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:layout_alignParentTop="true" android:background="@drawable/bg">
+		android:layout_width="fill_parent" android:layout_height="50dip"
+		android:layout_alignParentTop="true" android:background="@drawable/topBarbg">
 		<TextView android:text="资讯内容" android:textSize="20sp"
 			android:layout_centerInParent="true" android:layout_height="wrap_content"
 			android:id="@+id/topTitle" android:textColor="@drawable/white"

@@ -1,6 +1,7 @@
 package cn.hyena.apps.net;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
@@ -10,6 +11,7 @@ import android.os.Message;
 
 import cn.hyena.apps.mititarynews.analysis.NewsContentAnalysis;
 import cn.hyena.apps.mititarynews.analysis.NewsItemAnalysis;
+import cn.hyena.apps.mititarynews.bean.NewsBean;
 import cn.hyena.apps.utils.Common;
 import cn.hyena.apps.utils.ImageUtils;
 /**
@@ -70,6 +72,29 @@ public class HttpDataService {
 			handler.sendMessage(message);
 		}
         
+	}
+	
+	// 鑾峰彇鏂伴椈鍒楄〃
+	public static ArrayList<NewsBean> getNewsList(String n)
+			throws ClientProtocolException, IOException, NetWorkException,Exception {
+
+		StringBuffer sb = new StringBuffer();
+		sb.append(HOST_URL);
+		sb.append("get_title.php?");
+		// sb.append("&n=" + n);
+
+		try {
+			String jsonString = null;
+			jsonString = Common
+					.toHTMl(HttpConnection.GetHttpData(sb.toString()));
+			NewsItemAnalysis newsItemAnalysis = new NewsItemAnalysis();
+			newsItemAnalysis.parser(jsonString);// 锟斤拷锟斤拷锟斤拷锟?
+			return newsItemAnalysis.newsBeanArr;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**

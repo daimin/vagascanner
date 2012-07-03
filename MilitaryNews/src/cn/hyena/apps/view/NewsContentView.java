@@ -319,10 +319,6 @@ public class NewsContentView extends LinearLayout {
    
         @Override   
         public void onClick(View view) {   
-             //Toast.makeText(context, mUrl, Toast.LENGTH_LONG).show();   
-              /* if (view instanceof TextView) {
-                 ((TextView) view).setTextColor(Color.RED);
-             }*/
              Intent intent=new Intent();
 			 Bundle bundle = new Bundle();
 			 bundle.putString("url",mUrl);

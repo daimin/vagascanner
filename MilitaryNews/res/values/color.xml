@@ -35,4 +35,5 @@
   <drawable name="Transparent">#00000000</drawable>
   <drawable name="widget_item_bg">#a01f27</drawable>
   <drawable name="menu">#FFB90F</drawable>
+  <drawable name="topBarbg">#215E21</drawable>
 </resources>

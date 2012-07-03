@@ -4,8 +4,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" android:background="#F2F2F2">
     <RelativeLayout android:id="@+id/TopPnl"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:layout_alignParentTop="true" android:background="@drawable/bg">
+		android:layout_width="fill_parent" android:layout_height="50dip"
+		android:layout_alignParentTop="true" android:background="@drawable/topBarbg">
 		<TextView android:text="资讯列表" android:textSize="20sp"
 			android:layout_centerInParent="true" android:layout_height="wrap_content"
 			android:id="@+id/topTitle" android:textColor="@drawable/white"
@@ -29,4 +29,25 @@
 					android:layout_width="30dip" 
 					android:layout_height="30dip"
 					android:visibility="gone"/>
+	
+	<RelativeLayout android:id="@+id/startPage" android:layout_width="fill_parent" android:visibility="visible"
+    android:layout_height="fill_parent" android:orientation="vertical" android:clickable="false">
+	<ImageView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_centerHorizontal="true"
+		android:background="@drawable/start"
+		/>
+    <TextView android:layout_width="wrap_content"  android:layout_height="wrap_content" android:text="LOADING..." android:layout_centerHorizontal="true"
+	    android:textColor="@drawable/white" android:textSize="12dip" android:layout_above="@+id/startProgressBar" android:layout_marginBottom="3dip"/>
+	<ProgressBar
+	    android:id="@+id/startProgressBar"
+	    style="?android:attr/progressBarStyleHorizontal"
+	    android:progressDrawable="@drawable/progress_bar"
+	    android:layout_width="160dip"
+	    android:layout_height="12dip"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginBottom="110dip" />
+</RelativeLayout>
 </RelativeLayout>

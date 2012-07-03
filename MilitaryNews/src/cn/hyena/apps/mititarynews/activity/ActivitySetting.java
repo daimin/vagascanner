@@ -2,7 +2,6 @@ package cn.hyena.apps.mititarynews.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import cn.hyena.apps.mititarynews.R;
 import cn.hyena.apps.utils.Common;
 import cn.hyena.apps.utils.FileUtils;

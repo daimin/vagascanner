@@ -3,8 +3,11 @@ package cn.hyena.apps.net;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.zip.GZIPInputStream;
 import org.apache.http.Header;
@@ -18,7 +21,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
+
+import android.graphics.Bitmap;
 import android.util.Log;
+import cn.hyena.apps.utils.BitmapFactoryUtil;
 import cn.hyena.apps.utils.Common;
 import cn.hyena.apps.utils.LogUtils;
 
@@ -41,14 +47,10 @@ public class HttpConnection {
 
 	// 获取网络数据
 	public static String GetHttpData(String urls) {
-		// Log.d(TAG,"GetNewFav upurl="+upurl);
-		// if (NETTYPE!=0){
 		HttpClient httpclient = null;
 		HttpResponse httpResponse = null;
 		try {
 			httpclient = new DefaultHttpClient(httpParameters);
-			// HttpPost httpRequest = new HttpPost(urls);
-
 			HttpPost httpRequest;
 			if ("1".equals(Common.apnType)) {
 				Matcher mt = Common.getMatcher(urls, "http://.*?/");
@@ -111,14 +113,10 @@ public class HttpConnection {
 
 	// 获取网络数据
 	public static String GetHttpData(String urls,int num) {
-		// Log.d(TAG,"GetNewFav upurl="+upurl);
-		// if (NETTYPE!=0){
 		HttpClient httpclient = null;
 		HttpResponse httpResponse = null;
 		try {
 			httpclient = new DefaultHttpClient(httpParameters);
-			// HttpPost httpRequest = new HttpPost(urls);
-
 			HttpPost httpRequest;
 			if ("1".equals(Common.apnType)) {
 				Matcher mt = Common.getMatcher(urls, "http://.*?/");
@@ -181,6 +179,54 @@ public class HttpConnection {
 		// }
 		return "";
 	}
+	
+	 public static Bitmap getImage (String imageUrl){   
+		 HttpURLConnection conn;
+         Bitmap bm = null;
+         try {
+		        	
+		        	if ("1".equals(Common.apnType)){
+		        		Matcher mt= Common.getMatcher(imageUrl,"http://.*?/");
+		        		String temStr = ""; 
+		        	    while(mt.find()){
+		        	    	temStr = mt.group().replace("http://","").replace("/", "");
+		        	    }
+		        	    imageUrl = imageUrl.replace(temStr, "10.0.0.172");
+		    		    URL url = new URL(imageUrl);  
+		    		    conn = (HttpURLConnection) url.openConnection();  
+		  	            conn.setRequestProperty("X-Online-Host", temStr);
+		        	}else{
+		        		URL url = new URL(imageUrl); 
+		        		conn = (HttpURLConnection) url.openConnection();
+		        	}
+		        	conn.setDoInput(true); 
+					conn.setRequestMethod("GET");   
+		            conn.setConnectTimeout(2 * 1000); 
+		            conn.connect();
+		            if(conn.getResponseCode()==200){
+                        InputStream is = conn.getInputStream();
+     			        bm = BitmapFactoryUtil.decodeStream(is);
+     			        Log.i(TAG, "图片获取成功");
+     		            return bm;
+	                }else
+	                	Log.i(TAG, "图片获取失败");
+		            conn.disconnect();
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					LogUtils.e(TAG, "Commond  getNews:"+e);
+				} catch(OutOfMemoryError e){
+					if(bm != null && !bm.isRecycled()){
+		               bm.recycle();
+		               bm = null;
+		            }
+					e.printStackTrace();
+					System.gc();
+				}catch (IOException e) {
+					// TODO Auto-generated catch block
+					LogUtils.e(TAG, "Commond  getNews:"+e);
+				}
+         return null;
+      }
 	
 	public static byte[] getImageResource(HttpGet getMethod) throws IllegalStateException, IOException ,NetWorkException{
 		HttpResponse httpResponse = null;

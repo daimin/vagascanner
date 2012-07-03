@@ -2,6 +2,16 @@
 <resources>
     <string name="app_name">军事新闻</string>
     
+    <string name="menu_1">刷新</string>  
+ 	<string name="menu_2">设置</string>  
+	<string name="menu_3">反馈</string>  
+	<string name="menu_4">退出</string> 
+	
+	<string name="exit_pro">退出程序</string>
+ 	<string name="exit_pro_sure">是否确认退出？</string>   
+ 	<string name="exit_pro_yes">是</string>
+ 	<string name="exit_pro_no">否</string> 
+    
     <string name="setting">设置</string>
 	<string name="setting_push">推送设置</string>
     <string name="setting_push_key">setting_push</string>
